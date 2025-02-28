@@ -1,0 +1,69 @@
+# Git
+.git
+.gitignore
+.github
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.coverage.*
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Application specific
+*.pptx
+!pptx_templates/*.pptx
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+.temp/ 

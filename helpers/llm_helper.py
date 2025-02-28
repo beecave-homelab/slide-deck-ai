@@ -100,6 +100,7 @@ def is_valid_llm_provider_model(
         GlobalConfig.PROVIDER_COHERE,
         GlobalConfig.PROVIDER_TOGETHER_AI,
         GlobalConfig.PROVIDER_AZURE_OPENAI,
+        GlobalConfig.PROVIDER_OPENAI,
     ] and not api_key:
         return False
 
@@ -192,6 +193,20 @@ def get_langchain_llm(
             timeout=None,
             max_retries=1,
             api_key=api_key,
+        )
+
+    if provider == GlobalConfig.PROVIDER_OPENAI:
+        from langchain_openai import ChatOpenAI
+
+        logger.debug('Getting LLM via OpenAI: %s', model)
+        return ChatOpenAI(
+            model=model,
+            temperature=GlobalConfig.LLM_MODEL_TEMPERATURE,
+            max_tokens=max_new_tokens,
+            timeout=None,
+            max_retries=2,
+            api_key=api_key,
+            streaming=True,
         )
 
     if provider == GlobalConfig.PROVIDER_COHERE:

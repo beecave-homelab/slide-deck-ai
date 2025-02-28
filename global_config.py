@@ -23,6 +23,7 @@ class GlobalConfig:
     PROVIDER_OLLAMA = 'ol'
     PROVIDER_TOGETHER_AI = 'to'
     PROVIDER_AZURE_OPENAI = 'az'
+    PROVIDER_OPENAI = 'oa'
     VALID_PROVIDERS = {
         PROVIDER_COHERE,
         PROVIDER_GOOGLE_GEMINI,
@@ -30,10 +31,21 @@ class GlobalConfig:
         PROVIDER_OLLAMA,
         PROVIDER_TOGETHER_AI,
         PROVIDER_AZURE_OPENAI,
+        PROVIDER_OPENAI,
     }
     VALID_MODELS = {
         '[az]azure/open-ai': {
             'description': 'faster, detailed',
+            'max_new_tokens': 8192,
+            'paid': True,
+        },
+        '[oa]gpt-4o': {
+            'description': 'powerful, detailed',
+            'max_new_tokens': 8192,
+            'paid': True,
+        },
+        '[oa]gpt-4o-mini': {
+            'description': 'fastest, most capable',
             'max_new_tokens': 8192,
             'paid': True,
         },
@@ -79,6 +91,7 @@ class GlobalConfig:
         '- **[co]**: Cohere\n'
         '- **[gg]**: Google Gemini API\n'
         '- **[hf]**: Hugging Face Inference API\n'
+        '- **[oa]**: OpenAI\n'
         '- **[to]**: Together AI\n\n'
         '[Find out more](https://github.com/barun-saha/slide-deck-ai?tab=readme-ov-file#summary-of-the-llms)'
     )

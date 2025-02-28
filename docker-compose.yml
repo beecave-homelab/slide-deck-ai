@@ -1,0 +1,40 @@
+services:
+  slidedeck-ai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: slidedeck-ai
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    environment:
+      - HUGGINGFACEHUB_API_TOKEN=${HUGGINGFACEHUB_API_TOKEN}
+      - PEXEL_API_KEY=${PEXEL_API_KEY}
+      - RUN_IN_OFFLINE_MODE=${RUN_IN_OFFLINE_MODE:-False}
+    restart: unless-stopped
+    # If you want to use Ollama, uncomment the following lines
+    # depends_on:
+    #   - ollama
+    # networks:
+    #   - slidedeck-network
+
+  # Uncomment the following service if you want to use Ollama locally
+  # ollama:
+  #   image: ollama/ollama:latest
+  #   container_name: ollama
+  #   volumes:
+  #     - ollama-data:/root/.ollama
+  #   ports:
+  #     - "11434:11434"
+  #   restart: unless-stopped
+  #   networks:
+  #     - slidedeck-network
+
+# volumes:
+#   ollama-data:
+
+# networks:
+#   slidedeck-network:
+#     driver: bridge 
